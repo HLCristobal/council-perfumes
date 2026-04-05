@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Council. | Panel de Administración</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: #f1f4f8; font-family: 'Inter', sans-serif; padding: 40px; color: #121e2c; }
+        .admin-container { max-width: 1000px; margin: 0 auto; background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .admin-header h1 { color: var(--accent-blue); font-size: 2rem; }
+        .brand-section { margin-bottom: 50px; }
+        .brand-section h2 { background: var(--accent-blue); color: white; padding: 10px 20px; border-radius: 4px; margin-bottom: 20px; }
+        .perfume-editor { background: #f8f9fa; border: 1px solid #e1e5eb; padding: 20px; margin-bottom: 15px; border-radius: 6px; display: grid; grid-template-columns: 100px 1fr; gap: 20px; align-items: start; }
+        .perfume-editor img { width: 100px; height: 100px; object-fit: cover; border-radius: 4px; border: 1px solid #ccc; }
+        .perfume-fields { display: flex; flex-direction: column; gap: 10px; }
+        .form-row { display: flex; gap: 15px; align-items: center; }
+        .form-row label { font-size: 0.85rem; font-weight: 600; width: 80px; color: var(--text-secondary); flex-shrink: 0; }
+        .form-row input { flex-grow: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Inter', sans-serif; }
+        .form-row textarea { flex-grow: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: 'Inter', sans-serif; min-height: 60px; resize: vertical; }
+        .btn { padding: 10px 20px; background: var(--accent-blue); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .btn:hover { background: var(--accent-blue-hover); }
+        .btn-danger { background: #dc3545; padding: 5px 10px; font-size: 0.8rem; }
+        .btn-success { background: #198754; font-size: 1.1rem; padding: 15px 30px; }
+        .instruction-box { background: #e8f4fd; border-left: 4px solid var(--accent-blue); padding: 15px; margin-bottom: 30px; font-size: 0.95rem; }
+        .video-hint { font-size: 0.75rem; color: #64748b; margin-top: 4px; padding-left: 95px; }
+        .video-preview { padding-left: 95px; margin-top: 5px; }
+        .video-preview video { max-width: 300px; max-height: 170px; border-radius: 4px; border: 1px solid #ddd; background: #000; }
+    </style>
+</head>
+<body>
+
+<div class="admin-container">
+    <div class="admin-header">
+        <h1>Panel de Administración (Offline)</h1>
+        <button class="btn btn-success" id="export-btn">💾 Guardar Cambios</button>
+    </div>
+
+    <div class="instruction-box">
+        <strong>¿Cómo cambiar o añadir fotos, stock y videos?</strong><br>
+        1. Escribe la ruta de tu foto en el campo "Img" (ej. <code>assets/images/mifoto.jpg</code>).<br>
+        2. Puedes modificar los formatos usando la regla (Tamaño : Precio : Stock). Ejemplo: <code>50ml:195000:5</code><br>
+        3. Para agregar un <strong>video de reseña</strong>, coloca tu archivo de video en la carpeta <code>assets/videos/</code> y escribe la ruta en el campo "Video" (ej. <code>assets/videos/naxos_review.mp4</code>).<br>
+        4. Cuando termines, dale a <strong>Guardar Cambios</strong>. ¡Tus ediciones se aplicarán de inmediato a la tienda principal de tu navegador!
+    </div>
+
+    <div id="editor-container"></div>
+</div>
+
+<!-- Cargar datos -->
+<script src="assets/data.js"></script>
+<!-- Lógica del Admin -->
+<script src="admin.js"></script>
+</body>
+</html>

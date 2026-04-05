@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Council. | Perfumería Elegante</title>
+    <meta name="description" content="Council. — Las casas de perfumería nicho más prestigiosas del mundo. Xerjoff, Tom Ford, Creed, Parfums de Marly, Initio. Envíos a todo Chile.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- SDK MercadoPago.js V2 -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Council.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#collection">Colección</a></li>
+            <li><a href="#about">Esencia</a></li>
+        </ul>
+        <div class="cart-icon" id="cart-icon">Cart (0)</div>
+    </nav>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Tu Carrito</h2>
+            <button id="close-cart" class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items -> JS -->
+        </div>
+        <div class="cart-footer">
+            <h3>Total: <span id="cart-total">$ 0 CLP</span></h3>
+            <button class="btn-checkout">Finalizar Compra</button>
+        </div>
+    </div>
+    <div id="cart-overlay" class="cart-overlay"></div>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="reveal-text">El Arte de lo Exclusivo</h1>
+            <p class="reveal-text delay-1">Descubre las casas de perfumería nicho más prestigiosas del mundo.</p>
+            <a href="#collection" class="btn-primary reveal-text delay-2">Explorar la Colección</a>
+        </div>
+    </header>
+
+    <!-- Collection Section -->
+    <section id="collection" class="collection">
+        <div class="catalog-header">
+            <h2 class="section-title" id="dynamic-title">Nuestras Casas</h2>
+            <button id="back-btn" class="btn-primary back-btn">Volver a las Marcas</button>
+        </div>
+        
+        <div class="product-grid" id="main-grid">
+            <!-- Rendered by JS -->
+        </div>
+    </section>
+
+    <!-- ═══ PERFUME DETAIL MODAL ═══ -->
+    <div id="perfume-modal-overlay" class="perfume-modal-overlay">
+        <div class="perfume-modal" id="perfume-modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            
+            <div class="modal-body">
+                <!-- Left: Image -->
+                <div class="modal-image-col">
+                    <div class="modal-img-wrap">
+                        <img id="modal-img" src="" alt="Perfume">
+                    </div>
+                </div>
+
+                <!-- Right: Info -->
+                <div class="modal-info-col">
+                    <span class="modal-brand" id="modal-brand"></span>
+                    <h2 class="modal-name" id="modal-name"></h2>
+                    
+                    <div class="modal-divider"></div>
+                    
+                    <p class="modal-description" id="modal-description"></p>
+
+                    <div class="modal-notes-section">
+                        <span class="modal-notes-label">Notas Olfativas</span>
+                        <p class="modal-notes" id="modal-notes"></p>
+                    </div>
+
+                    <div class="modal-divider"></div>
+
+                    <!-- Formats Table -->
+                    <div class="modal-formats-section">
+                        <span class="modal-formats-label">Formatos Disponibles</span>
+                        <div class="modal-formats-grid" id="modal-formats"></div>
+                    </div>
+
+                    <div class="modal-divider"></div>
+
+                    <!-- Add to Cart from Modal -->
+                    <div class="modal-cart-section">
+                        <div class="modal-select-row">
+                            <select class="size-select modal-size-select" id="modal-size-select"></select>
+                            <span class="modal-price" id="modal-price"></span>
+                        </div>
+                        <span class="stock-status modal-stock" id="modal-stock"></span>
+                        <button class="btn-secondary modal-add-btn" id="modal-add-btn">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Review Section -->
+            <div class="modal-video-section" id="modal-video-section">
+                <div class="modal-divider"></div>
+                <h3 class="modal-video-title">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    Video Reseña
+                </h3>
+                <div class="modal-video-container" id="modal-video-container">
+                    <video id="modal-video" controls preload="metadata">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+            </div>
+
+            <div class="modal-no-video" id="modal-no-video">
+                <div class="modal-divider"></div>
+                <div class="no-video-placeholder">
+                    <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor" opacity="0.3"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                    <p>Reseña en video próximamente</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About / Parallax Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>Nuestra Filosofía</h2>
+            <p>En Council., creemos que el perfume no es solo un aroma, sino una extensión de tu identidad. Contamos con las casas de perfumería nicho más aclamadas de la alta perfumería mundial, garantizando originalidad, performance y exclusividad en cada gota.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Council. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="assets/data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

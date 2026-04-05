@@ -1,0 +1,10 @@
+{
+    "name": "council-perfumes",
+    "version": "1.0.0",
+    "description": "Council. — Perfumería Nicho Elegante",
+    "private": true,
+    "scripts": {
+        "start": "npx serve .",
+        "dev": "npx serve . -l 3000"
+    }
+}
