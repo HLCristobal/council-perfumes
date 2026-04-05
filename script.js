@@ -66,11 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Navbar Scroll Effect
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 5px 25px rgba(0,0,0,0.05)';
-            navbar.style.padding = '1rem 5%';
+            navbar.classList.add('scrolled');
+            navbar.style.background = 'rgba(6, 10, 20, 0.95)';
+            navbar.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)';
+            navbar.style.padding = '0.8rem 5%';
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.85)';
+            navbar.classList.remove('scrolled');
+            navbar.style.background = 'rgba(6, 10, 20, 0.75)';
             navbar.style.boxShadow = 'none';
             navbar.style.padding = '1.5rem 5%';
         }
@@ -433,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let total = 0;
 
         if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p style="color:var(--text-secondary); text-align:center; padding-top:20px;">Tu carrito está vacío.</p>';
+            cartItemsContainer.innerHTML = '<p style="color:#7b8da6; text-align:center; padding-top:20px; font-size:0.85rem; letter-spacing:1px;">Tu carrito está vacío.</p>';
         }
 
         cart.forEach(item => {
@@ -444,10 +446,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="cart-item-details">
                         <div class="cart-item-title">${item.brand} - ${item.name}</div>
                         <div class="cart-item-desc">${item.size} ml</div>
-                        <div class="qty-controls" style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-                            <button class="qty-btn" onclick="window.updateCartQty('${item.id}', -1)" style="width:25px; height:25px; cursor:pointer; background:transparent; border:1px solid #e2e8f0; font-weight:bold;">-</button>
-                            <span class="qty-val" style="font-size:0.85rem; font-weight:600; min-width:15px; text-align:center;">${item.qty}</span>
-                            <button class="qty-btn" onclick="window.updateCartQty('${item.id}', 1)" style="width:25px; height:25px; cursor:pointer; background:transparent; border:1px solid #e2e8f0; font-weight:bold;">+</button>
+                        <div class="qty-controls" style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                            <button class="qty-btn" onclick="window.updateCartQty('${item.id}', -1)" style="width:28px; height:28px; cursor:pointer; background:transparent; border:1px solid rgba(74,144,226,0.2); color:#4a90e2; font-weight:500; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:all 0.3s;">−</button>
+                            <span class="qty-val" style="font-size:0.85rem; font-weight:500; min-width:18px; text-align:center; color:#e4eaf4;">${item.qty}</span>
+                            <button class="qty-btn" onclick="window.updateCartQty('${item.id}', 1)" style="width:28px; height:28px; cursor:pointer; background:transparent; border:1px solid rgba(74,144,226,0.2); color:#4a90e2; font-weight:500; font-size:1rem; display:flex; align-items:center; justify-content:center; transition:all 0.3s;">+</button>
                         </div>
                         <div class="cart-item-price">${formatCurrency(item.price * item.qty)}</div>
                         <button class="remove-item" onclick="window.removeFromCart('${item.id}')">Eliminar</button>
